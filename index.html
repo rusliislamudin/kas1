@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kas Keuangan Jualan</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fas fa-wallet"></i> Kas Keuangan Jualan</h1>
+        
+        <div class="form-container" id="transactionForm">
+            <h2><span id="formTitle">Tambah</span> Transaksi</h2>
+            <input type="hidden" id="editId">
+            
+            <div class="form-group">
+                <label for="date"><i class="far fa-calendar-alt"></i> Tanggal:</label>
+                <input type="date" id="date" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="description"><i class="far fa-comment-dots"></i> Keterangan:</label>
+                <input type="text" id="description" placeholder="Misal: Penjualan produk A" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="amount"><i class="fas fa-money-bill-wave"></i> Jumlah (Rp):</label>
+                <input type="number" id="amount" placeholder="100000" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="type"><i class="fas fa-exchange-alt"></i> Jenis Transaksi:</label>
+                <select id="type">
+                    <option value="income">Pemasukan</option>
+                    <option value="expense">Pengeluaran</option>
+                </select>
+            </div>
+            
+            <div class="form-actions">
+                <button id="saveBtn"><i class="fas fa-save"></i> Simpan</button>
+                <button id="cancelBtn" class="secondary"><i class="fas fa-times"></i> Batal</button>
+            </div>
+        </div>
+        
+        <div class="summary">
+            <h2><i class="fas fa-chart-pie"></i> Ringkasan Keuangan</h2>
+            <div class="summary-grid">
+                <div class="summary-card income">
+                    <h3>Pemasukan</h3>
+                    <p id="totalIncome">Rp 0</p>
+                </div>
+                <div class="summary-card expense">
+                    <h3>Pengeluaran</h3>
+                    <p id="totalExpense">Rp 0</p>
+                </div>
+                <div class="summary-card balance">
+                    <h3>Saldo</h3>
+                    <p id="balance">Rp 0</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="transactions">
+            <div class="transactions-header">
+                <h2><i class="fas fa-list"></i> Daftar Transaksi</h2>
+                <button id="addNewBtn" class="primary"><i class="fas fa-plus"></i> Tambah Baru</button>
+            </div>
+            
+            <div class="table-container">
+                <table id="transactionTable">
+                    <thead>
+                        <tr>
+                            <th>Tanggal</th>
+                            <th>Keterangan</th>
+                            <th>Pemasukan</th>
+                            <th>Pengeluaran</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transactionList">
+                        <!-- Data transaksi akan dimasukkan di sini -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Konfirmasi Hapus -->
+    <div id="confirmModal" class="modal">
+        <div class="modal-content">
+            <h3>Konfirmasi Hapus</h3>
+            <p>Apakah Anda yakin ingin menghapus transaksi ini?</p>
+            <div class="modal-actions">
+                <button id="confirmDelete" class="danger"><i class="fas fa-trash"></i> Hapus</button>
+                <button id="cancelDelete" class="secondary"><i class="fas fa-times"></i> Batal</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
